@@ -1,0 +1,42 @@
+buildscript {
+	ext {
+		springBootVersion = '1.0.2.RELEASE'
+	}
+    repositories {
+        maven { url "http://repo.spring.io/libs-snapshot" }
+        mavenLocal()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.0.2.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'war'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+war {
+    baseName = 'cidadaozencoreutil'
+    version =  '2.7.7.4'
+}
+
+repositories {
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+    maven { url "http://maven.springframework.org/milestone" }
+	maven { url "http://repo.opensourceagility.com/snapshots" }    
+}
+
+dependencies {
+
+    compile("com.squareup.retrofit:retrofit:1.9.0")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}
